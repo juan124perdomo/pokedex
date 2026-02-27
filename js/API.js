@@ -4,11 +4,11 @@ const API = `https://pokeapi.co/api/v2/pokemon`;
 
 let todosLosPokemones = [];
 
-export const cargarPokemones = async (filtro = "verTodos")=>{
+export const cargarPokemones = async ()=>{
 
     if(todosLosPokemones.length > 0) return todosLosPokemones;
 
-    for (let i = 1; i <= 200; i++) {
+    for (let i = 1; i <= 300; i++) {
         try {
             const response = await fetch(`${API}/${i}`);
             const data = await response.json();
@@ -22,7 +22,7 @@ export const cargarPokemones = async (filtro = "verTodos")=>{
     return todosLosPokemones;
 }
 
-export const filtrarPokemon = (filtro)=>{
+export const filtrarPokemon = (filtro = "verTodos")=>{
     if(filtro === "verTodos"){
             todosLosPokemones.forEach(p =>mostrarPokemon(p));
         }else{
@@ -33,3 +33,17 @@ export const filtrarPokemon = (filtro)=>{
                 
             }
 }
+
+export const buscarPokemon = (texto = "")=>{
+
+    const valor = texto.toLowerCase();
+
+    const resultados = todosLosPokemones.filter(p=>
+        p.name.includes(valor)
+    );
+    return resultados;
+
+
+
+}
+

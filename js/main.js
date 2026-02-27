@@ -1,10 +1,15 @@
-import { cargarPokemones, filtrarPokemon } from "./API.js";
+import { cargarPokemones, filtrarPokemon, buscarPokemon } from "./API.js";
 
 
 const API = "https://pokeapi.co/api/v2/pokemon";
 
 const pokemonList = document.getElementById("pokemonList");
 const btn = document.querySelectorAll(".btn");
+const inputSearch = document.getElementById("navSearch");
+
+
+
+
 
 
 
@@ -53,6 +58,16 @@ btn.forEach(boton =>{
         
     });
 });
+
+inputSearch.addEventListener("input", (e)=>{
+    const texto = e.target.value.trim();
+    pokemonList.innerHTML = "";
+
+    const resultados = buscarPokemon(texto);
+    resultados.forEach(mostrarPokemon);
+    
+
+})
 
 
 cargarPokemones();             
