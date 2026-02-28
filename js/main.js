@@ -1,8 +1,6 @@
 import { cargarPokemones, filtrarPokemon, buscarPokemon } from "./API.js";
 
 
-const API = "https://pokeapi.co/api/v2/pokemon";
-
 const pokemonList = document.getElementById("pokemonList");
 const btn = document.querySelectorAll(".btn");
 const inputSearch = document.getElementById("navSearch");
